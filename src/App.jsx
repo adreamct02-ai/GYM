@@ -29,6 +29,27 @@ function calcScore(b, d, o, w, h) {
   return 1;
 }
 
+// ── GlowInput 컴포넌트 밖에 선언 (모바일 키보드 접힘 방지) ──────
+function GlowInput({ placeholder, value, onChange, type = "text", style: s = {} }) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      style={{
+        width: "100%", padding: "12px 16px",
+        background: "#141A22", color: "#E4E0D2",
+        border: "1px solid #222C3A", borderRadius: 6,
+        fontSize: 15, outline: "none",
+        transition: "border-color .2s", ...s,
+      }}
+      onFocus={(e) => (e.target.style.borderColor = "#C8A942")}
+      onBlur={(e) => (e.target.style.borderColor = "#222C3A")}
+    />
+  );
+}
+
 function compressPhoto(file) {
   return new Promise((res) => {
     const img = new Image();
@@ -80,7 +101,7 @@ export default function App() {
       ::-webkit-scrollbar-track{background:#07090C}
       ::-webkit-scrollbar-thumb{background:#1E2530;border-radius:2px}
       input,textarea,button{font-family:'Noto Sans KR',sans-serif}
-      input::placeholder,textarea::placeholder{color:#2A3040}
+      input::placeholder,textarea::placeholder{color:#8A9BB0}
       @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
       @keyframes fadeIn{from{opacity:0}to{opacity:1}}
       @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -228,24 +249,6 @@ export default function App() {
   };
 
   // ─── SHARED COMPONENTS ─────────────────────────────
-  const GlowInput = ({ placeholder, value, onChange, type = "text", style: s = {} }) => (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      style={{
-        width: "100%", padding: "12px 16px",
-        background: C.bg3, color: C.text,
-        border: `1px solid ${C.border2}`, borderRadius: 6,
-        fontSize: 15, outline: "none",
-        transition: "border-color .2s", ...s,
-      }}
-      onFocus={(e) => (e.target.style.borderColor = C.accent)}
-      onBlur={(e) => (e.target.style.borderColor = C.border2)}
-    />
-  );
-
   const PrimaryBtn = ({ children, onClick, disabled, style: s = {} }) => (
     <button
       onClick={onClick}
@@ -337,9 +340,9 @@ export default function App() {
           <div style={{ fontSize: 72, marginBottom: 6, filter: "drop-shadow(0 0 20px rgba(200,169,66,.5))" }}>🏋️</div>
           <h1 style={{
             fontFamily: "'Black Han Sans', sans-serif",
-            fontSize: 46, color: C.accent, letterSpacing: "0.06em", marginBottom: 4,
+            fontSize: 38, color: C.accent, letterSpacing: "0.06em", marginBottom: 4,
             textShadow: "0 0 30px rgba(200,169,66,.4)",
-          }}>체단실 랭킹</h1>
+          }}>39통문 체단실 랭킹</h1>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 48 }}>
             <div style={{ height: 1, width: 40, background: C.border2 }} />
             <p style={{ color: C.text2, fontSize: 12, letterSpacing: "0.14em" }}>소대 파워리프팅 순위</p>
@@ -610,7 +613,7 @@ export default function App() {
         }}>
           <div>
             <h1 style={{ fontFamily: "'Black Han Sans', sans-serif", fontSize: 21, color: C.accent, letterSpacing: "0.05em" }}>
-              🏋️ 체단실 랭킹
+              🏋️ 39통문 체단실 랭킹
             </h1>
             <p style={{ color: C.text3, fontSize: 10, marginTop: 1 }}>총 {ranked.length}명 등록</p>
           </div>
