@@ -1,0 +1,13 @@
+{
+  "name": "체단실 랭킹",
+  "short_name": "체단실",
+  "description": "전군 파워리프팅 1RM 랭킹 시스템",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07090C",
+  "theme_color": "#C8A942",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "https://api.qrserver.com/v1/create-qr-code/?size=192x192&data=gym-rank", "sizes": "192x192", "type": "image/png" }
+  ]
+}
