@@ -545,7 +545,7 @@ export default function App(){
               <div style={{background:isMe?C.accent:C.bg3,color:isMe?"#000":C.text,borderRadius:isMe?"12px 12px 3px 12px":"12px 12px 12px 3px",padding:"8px 11px",fontSize:13,lineHeight:1.5,wordBreak:"break-word"}}>{m.content}</div>
               <div style={{color:C.text3,fontSize:9,marginTop:2,textAlign:isMe?"right":"left"}}>{new Date(m.created_at).toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit"})}</div>
             </div>
-          </div>);}}))}
+          </div>);})}
         </div>
         <div style={{position:"fixed",bottom:"env(safe-area-inset-bottom,0px)",left:0,right:0,padding:"8px 12px",background:C.bg2,borderTop:`1px solid ${C.border}`,display:"flex",gap:7,zIndex:25}}>
           <input value={chatInput} onChange={e=>setChatInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}}} placeholder="메시지 입력..." style={{flex:1,padding:"10px 13px",background:C.bg3,border:`1px solid ${C.border2}`,borderRadius:20,color:C.text,fontSize:14,outline:"none"}}/>
